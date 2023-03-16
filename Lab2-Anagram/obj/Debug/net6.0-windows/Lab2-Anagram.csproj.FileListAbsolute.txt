@@ -1,0 +1,17 @@
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\bin\Debug\net6.0-windows\Lab2-Anagram.exe
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\bin\Debug\net6.0-windows\Lab2-Anagram.deps.json
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\bin\Debug\net6.0-windows\Lab2-Anagram.runtimeconfig.json
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\bin\Debug\net6.0-windows\Lab2-Anagram.dll
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\bin\Debug\net6.0-windows\Lab2-Anagram.pdb
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2-Anagram.csproj.AssemblyReference.cache
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2_Anagram.frmMainWindow.resources
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2-Anagram.csproj.GenerateResource.cache
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2-Anagram.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2-Anagram.AssemblyInfoInputs.cache
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2-Anagram.AssemblyInfo.cs
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2-Anagram.csproj.CoreCompileInputs.cache
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2-Anagram.dll
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\refint\Lab2-Anagram.dll
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2-Anagram.pdb
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\Lab2-Anagram.genruntimeconfig.cache
+C:\Users\alexa\Nextcloud\z_sidious\S2\R202 - Développement d'applications avec IHM\3 - TP Application\Lab2-Anagram\Lab2-Anagram\obj\Debug\net6.0-windows\ref\Lab2-Anagram.dll
