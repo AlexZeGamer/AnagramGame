@@ -7,8 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lab2-Anagram", "Lab2-Anagra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Éléments de solution", "Éléments de solution", "{61600601-31A3-4849-BB78-7E27C26966A2}"
 	ProjectSection(SolutionItems) = preProject
-		Lab2-Anagram\files\flags\en.svg = Lab2-Anagram\files\flags\en.svg
-		Lab2-Anagram\files\flags\fr.svg = Lab2-Anagram\files\flags\fr.svg
+		Lab2-Anagram\files\flags\en.png = Lab2-Anagram\files\flags\en.png
+		Lab2-Anagram\files\flags\fr.png = Lab2-Anagram\files\flags\fr.png
 		Lab2-Anagram\files\words.txt = Lab2-Anagram\files\words.txt
 	EndProjectSection
 EndProject

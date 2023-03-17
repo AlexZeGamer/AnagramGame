@@ -4,18 +4,14 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
-// TODO:
+/* TODO: */
 // - Display an error if the word list is not found (with instructions to put it back)
-// - Put an icon on the form (that will show up in the taskbar)
 // - Check the functional and operational tables
-// - Make the "How to play" popup
-// - Make the "About" popup
 // - Enhance keyboard navigation
 //   - Choose appropriate default item on YesNo text boxes
 //   - Make it so the default keyboard selected item is the guess text box
-// - Make it so we can give up and show the word (when pressing "New game" ?)
-// - Make sure a word is shuffled (the shuffled word is not the same as the original word), else shuffle it again
-// - Check if the guess is the good length, and contains all the letters shuffled
+//   - Change tab navigation order
+// - Check if the guess contains all the letters shuffled
 // - Make a configuration popup where we can:
 //   - change the language of the word list
 //   - select a custom word list
@@ -26,10 +22,27 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 //     (with a message to indicate that the games log will not be erased)
 // - Make a win animation ? (like in Solitaire)
 // - Dark mode ?
+//   - Custom theme with a color selector
+// - GitHub :
+//   - Make a README.md (List of features, how to compile, screenshots, etc.)
+//   - Make a .gitignore
+//   - Move this TODO to a separate file (README?)
+// - Make a way to export results?
 
-// Done:
+/* In progress: */
+// - Put an icon on the form (that will show up in the taskbar)
+// - ...
+
+/* Done: */
 // - Known bug : if you win/lose and hit "no" then "no" you have to restart a game and it will be logged twice
+// - Make it so we can give up and show the word (when pressing "New game" ?) => Puts the word in the games history when giving up a game
 // - Make it so we can validate the word by pressing the "Enter" key
+// - Make the "How to play" popup
+// - Make the "About" popup
+// - Check if the guess is the good length
+// - Make it so the list of previous guesses and game history auto-scroll to the bottom
+// - Make sure a word is shuffled (the shuffled word is not the same as the original word), else shuffle it again
+// - Make it so we can copy a list item (previours guesses/games) when right clicking it
 
 
 namespace Lab2_Anagram
@@ -43,7 +56,7 @@ namespace Lab2_Anagram
         String word;
         int gameNumber = 0;
         int nbTriesRemaining = 5;
-        string[] words = System.IO.File.ReadAllLines("./files/words.txt");
+        string[] words = System.IO.File.ReadAllLines("./files/word_lists/wordsEN.txt");
 
         public frmMainWindow()
         {
@@ -63,12 +76,15 @@ namespace Lab2_Anagram
         {
             string shuffledWord = "";
 
-            for (int i = 0; i < word.Length; i++)
+            do
             {
-                char letter = word[i];
-                int pos = randint(0, shuffledWord.Length);
-                shuffledWord = shuffledWord.Insert(pos, letter.ToString());
-            }
+                for (int i = 0; i < word.Length; i++)
+                {
+                    char letter = word[i];
+                    int pos = randint(0, shuffledWord.Length);
+                    shuffledWord = shuffledWord.Insert(pos, letter.ToString());
+                }
+            } while (shuffledWord == word);
 
             return shuffledWord;
         }
@@ -146,6 +162,9 @@ namespace Lab2_Anagram
 
             // Add the log to the list
             lstGameHistory.Items.Add(log);
+
+            // Scroll down to the bottom of the list
+            lstGameHistory.TopIndex = lstGameHistory.Items.Count - 1;
         }
 
         private void endOfTheGame(bool win = false)
@@ -172,7 +191,7 @@ namespace Lab2_Anagram
             // If the user wants to play again, start a new game
             if (result == DialogResult.Yes) { initialisation(); }
 
-            // close without triggering frmMainWindow_FormClosing
+            // Close without triggering frmMainWindow_FormClosing
             else { this.Dispose(); }
         }
 
@@ -211,6 +230,9 @@ namespace Lab2_Anagram
             // Get the word and save it in the history
             String guessedWord = tbxGuess.Text;
             lstPreviousGuesses.Items.Add(guessedWord);
+
+            // Scroll down to the bottom of the list
+            lstPreviousGuesses.TopIndex = lstPreviousGuesses.Items.Count - 1;
 
             // Empty the text box
             tbxGuess.Clear();
@@ -298,6 +320,40 @@ namespace Lab2_Anagram
 
             MessageBoxButtons buttons = MessageBoxButtons.OK;
             MessageBox.Show(message, title, buttons, MessageBoxIcon.Information);
+        }
+
+        private void lstGameHistory_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right) { return; }
+
+            // Create a new ContextMenuStrip control
+            ContextMenuStrip cms = new ContextMenuStrip();
+
+            int index = this.lstGameHistory.IndexFromPoint(e.Location);
+            if (index == ListBox.NoMatches) { return; }
+            else { lstGameHistory.SetSelected(index, true); }
+            
+            string? text = lstGameHistory.Items[index].ToString();
+
+            // Add the Copy option (copies the selected text inside the richtextbox)
+            ToolStripMenuItem tsmiCopy = new ToolStripMenuItem("Copy");
+            tsmiCopy.Click += (sender, e) => Clipboard.SetText(text); ;
+            cms.Items.Add(tsmiCopy);
+
+            // Set the ContextMenuStrip property of the richtextbox to your context menu
+            lstGameHistory.ContextMenuStrip = cms;
+        }
+
+
+        private void cmsCopy_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            cmsCopy.Items.Clear();
+            cmsCopy.Items.Add("Copy");
+        }
+
+        private void tsmCopy_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(lstGameHistory.SelectedItems.ToString());
         }
     }
 }

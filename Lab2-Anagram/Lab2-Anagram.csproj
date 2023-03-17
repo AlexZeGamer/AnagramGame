@@ -7,7 +7,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>files\icons\alphabet.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="files\icons\alphabet.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="files\flags\en.png">
@@ -16,9 +21,15 @@
     <None Update="files\flags\fr.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="files\words.txt">
+    <None Update="files\icons\alphabet.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="files\word_lists\wordsEN.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <!-- <None Include="$(SolutionDir)files\**" 
+      CopyToOutputDirectory="PreserveNewest"
+      LinkBase="files\" /> -->
   </ItemGroup>
 
 </Project>

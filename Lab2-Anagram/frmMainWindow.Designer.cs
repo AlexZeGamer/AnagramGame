@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblTxtWordToGuess = new Label();
             lblWord = new Label();
             grpGuess = new GroupBox();
@@ -40,15 +41,18 @@
             lblTxtNumberOfRemainingGuesses = new Label();
             grpGameHistory = new GroupBox();
             lstGameHistory = new ListBox();
+            cmsCopy = new ContextMenuStrip(components);
             btnNewGame = new Button();
             btnExit = new Button();
             lnkHowToPlay = new LinkLabel();
             comboBox1 = new ComboBox();
             lnkAbout = new LinkLabel();
+            tsmCopy = new ToolStripMenuItem();
             grpGuess.SuspendLayout();
             grpTries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numNbrGuesses).BeginInit();
             grpGameHistory.SuspendLayout();
+            cmsCopy.SuspendLayout();
             SuspendLayout();
             // 
             // lblTxtWordToGuess
@@ -162,12 +166,21 @@
             // 
             // lstGameHistory
             // 
+            lstGameHistory.ContextMenuStrip = cmsCopy;
             lstGameHistory.FormattingEnabled = true;
             lstGameHistory.ItemHeight = 15;
             lstGameHistory.Location = new Point(6, 22);
             lstGameHistory.Name = "lstGameHistory";
             lstGameHistory.Size = new Size(249, 229);
             lstGameHistory.TabIndex = 4;
+            lstGameHistory.MouseDown += lstGameHistory_MouseDown;
+            // 
+            // cmsCopy
+            // 
+            cmsCopy.Items.AddRange(new ToolStripItem[] { tsmCopy });
+            cmsCopy.Name = "cmsCopy";
+            cmsCopy.Size = new Size(181, 48);
+            cmsCopy.Opening += cmsCopy_Opening;
             // 
             // btnNewGame
             // 
@@ -225,6 +238,13 @@
             lnkAbout.TextAlign = ContentAlignment.TopRight;
             lnkAbout.LinkClicked += lnkAbout_LinkClicked;
             // 
+            // tsmCopy
+            // 
+            tsmCopy.Name = "tsmCopy";
+            tsmCopy.Size = new Size(180, 22);
+            tsmCopy.Text = "Copy";
+            tsmCopy.Click += tsmCopy_Click;
+            // 
             // frmMainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -253,6 +273,7 @@
             grpTries.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numNbrGuesses).EndInit();
             grpGameHistory.ResumeLayout(false);
+            cmsCopy.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -276,5 +297,7 @@
         private LinkLabel lnkHowToPlay;
         private ComboBox comboBox1;
         private LinkLabel lnkAbout;
+        private ContextMenuStrip cmsCopy;
+        private ToolStripMenuItem tsmCopy;
     }
 }
