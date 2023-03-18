@@ -15,21 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="files\flags\en.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="files\flags\fr.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="files\icons\alphabet.ico">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="files\word_lists\wordsEN.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <!-- <None Include="$(SolutionDir)files\**" 
-      CopyToOutputDirectory="PreserveNewest"
-      LinkBase="files\" /> -->
+    <Content Include="files\**\*.*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
