@@ -1,10 +1,3 @@
-using System.DirectoryServices;
-using System.IO;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
-
-
 namespace Lab2_Anagram
 {
     public partial class frmMainWindow : Form
@@ -16,7 +9,7 @@ namespace Lab2_Anagram
         string word = "";
         int gameNumber = 0;
         int nbTriesRemaining = 5;
-        string[] words = System.IO.File.ReadAllLines("./files/word_lists/wordsEN.txt");
+        readonly string[] words = File.ReadAllLines("./files/word_lists/wordsEN.txt");
 
         public frmMainWindow()
         {
@@ -36,7 +29,8 @@ namespace Lab2_Anagram
         {
             string shuffledWord;
 
-            do {
+            do
+            {
                 shuffledWord = "";
 
                 for (int i = 0; i < word.Length; i++)
@@ -75,10 +69,6 @@ namespace Lab2_Anagram
 
         private void initialisation()
         {
-            notifyIcon1.Icon = new System.Drawing.Icon(@"./files/icons/alphabet.ico");
-            notifyIcon1.Text = "Anagram";
-            notifyIcon1.Visible = true;
-
             // Hide the arrows of the numeric up/down field (number of tries)
             numNbrGuesses.Controls[0].Visible = false;
 
@@ -307,18 +297,6 @@ namespace Lab2_Anagram
 
             // Set the ContextMenuStrip property of the richtextbox to your context menu
             lstGameHistory.ContextMenuStrip = cms;
-        }
-
-
-        private void cmsCopy_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            cmsCopy.Items.Clear();
-            cmsCopy.Items.Add("Copy");
-        }
-
-        private void tsmCopy_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(lstGameHistory.SelectedItems.ToString());
         }
 
     }

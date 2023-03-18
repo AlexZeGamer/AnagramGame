@@ -42,19 +42,15 @@
             lblTxtNumberOfRemainingGuesses = new Label();
             grpGameHistory = new GroupBox();
             lstGameHistory = new ListBox();
-            cmsCopy = new ContextMenuStrip(components);
-            tsmCopy = new ToolStripMenuItem();
             btnNewGame = new Button();
             btnExit = new Button();
             lnkHowToPlay = new LinkLabel();
             cbxLanguage = new ComboBox();
             lnkAbout = new LinkLabel();
-            notifyIcon1 = new NotifyIcon(components);
             grpGuess.SuspendLayout();
             grpTries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numNbrGuesses).BeginInit();
             grpGameHistory.SuspendLayout();
-            cmsCopy.SuspendLayout();
             SuspendLayout();
             // 
             // lblTxtWordToGuess
@@ -72,9 +68,9 @@
             lblWord.Font = new Font("Segoe UI", 25F, FontStyle.Bold, GraphicsUnit.Point);
             lblWord.Location = new Point(12, 24);
             lblWord.Name = "lblWord";
-            lblWord.Size = new Size(127, 46);
+            lblWord.Size = new Size(176, 46);
             lblWord.TabIndex = 1;
-            lblWord.Text = "WORD";
+            lblWord.Text = "Loading...";
             // 
             // grpGuess
             // 
@@ -126,7 +122,8 @@
             lstPreviousGuesses.Location = new Point(6, 64);
             lstPreviousGuesses.Name = "lstPreviousGuesses";
             lstPreviousGuesses.Size = new Size(291, 154);
-            lstPreviousGuesses.TabIndex = 3;
+            lstPreviousGuesses.TabIndex = 4;
+            lstPreviousGuesses.TabStop = false;
             // 
             // lblTxtPreviousGuesses
             // 
@@ -143,9 +140,9 @@
             numNbrGuesses.ImeMode = ImeMode.NoControl;
             numNbrGuesses.Location = new Point(184, 17);
             numNbrGuesses.Name = "numNbrGuesses";
-            numNbrGuesses.ReadOnly = true;
             numNbrGuesses.Size = new Size(113, 23);
-            numNbrGuesses.TabIndex = 1;
+            numNbrGuesses.TabIndex = 3;
+            numNbrGuesses.TabStop = false;
             // 
             // lblTxtNumberOfRemainingGuesses
             // 
@@ -168,35 +165,21 @@
             // 
             // lstGameHistory
             // 
-            lstGameHistory.ContextMenuStrip = cmsCopy;
             lstGameHistory.FormattingEnabled = true;
             lstGameHistory.ItemHeight = 15;
             lstGameHistory.Location = new Point(6, 22);
             lstGameHistory.Name = "lstGameHistory";
             lstGameHistory.Size = new Size(249, 229);
-            lstGameHistory.TabIndex = 4;
+            lstGameHistory.TabIndex = 5;
+            lstGameHistory.TabStop = false;
             lstGameHistory.MouseDown += lstGameHistory_MouseDown;
-            // 
-            // cmsCopy
-            // 
-            cmsCopy.Items.AddRange(new ToolStripItem[] { tsmCopy });
-            cmsCopy.Name = "cmsCopy";
-            cmsCopy.Size = new Size(103, 26);
-            cmsCopy.Opening += cmsCopy_Opening;
-            // 
-            // tsmCopy
-            // 
-            tsmCopy.Name = "tsmCopy";
-            tsmCopy.Size = new Size(102, 22);
-            tsmCopy.Text = "Copy";
-            tsmCopy.Click += tsmCopy_Click;
             // 
             // btnNewGame
             // 
             btnNewGame.Location = new Point(327, 347);
             btnNewGame.Name = "btnNewGame";
             btnNewGame.Size = new Size(153, 30);
-            btnNewGame.TabIndex = 5;
+            btnNewGame.TabIndex = 6;
             btnNewGame.Text = "New Game";
             btnNewGame.UseVisualStyleBackColor = true;
             btnNewGame.Click += btnNewGame_Click;
@@ -206,7 +189,7 @@
             btnExit.Location = new Point(486, 347);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(90, 30);
-            btnExit.TabIndex = 6;
+            btnExit.TabIndex = 7;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
@@ -217,7 +200,7 @@
             lnkHowToPlay.Location = new Point(404, 12);
             lnkHowToPlay.Name = "lnkHowToPlay";
             lnkHowToPlay.Size = new Size(76, 15);
-            lnkHowToPlay.TabIndex = 7;
+            lnkHowToPlay.TabIndex = 8;
             lnkHowToPlay.TabStop = true;
             lnkHowToPlay.Text = "How to play?";
             lnkHowToPlay.TextAlign = ContentAlignment.TopRight;
@@ -232,7 +215,8 @@
             cbxLanguage.Location = new Point(532, 12);
             cbxLanguage.Name = "cbxLanguage";
             cbxLanguage.Size = new Size(50, 24);
-            cbxLanguage.TabIndex = 7;
+            cbxLanguage.TabIndex = 10;
+            cbxLanguage.TabStop = false;
             cbxLanguage.DrawItem += comboBox_DrawItem;
             // 
             // lnkAbout
@@ -241,16 +225,11 @@
             lnkAbout.Location = new Point(486, 12);
             lnkAbout.Name = "lnkAbout";
             lnkAbout.Size = new Size(40, 15);
-            lnkAbout.TabIndex = 8;
+            lnkAbout.TabIndex = 9;
             lnkAbout.TabStop = true;
             lnkAbout.Text = "About";
             lnkAbout.TextAlign = ContentAlignment.TopRight;
             lnkAbout.LinkClicked += lnkAbout_LinkClicked;
-            // 
-            // notifyIcon1
-            // 
-            notifyIcon1.Text = "notifyIcon1";
-            notifyIcon1.Visible = true;
             // 
             // frmMainWindow
             // 
@@ -281,7 +260,6 @@
             grpTries.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numNbrGuesses).EndInit();
             grpGameHistory.ResumeLayout(false);
-            cmsCopy.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -305,8 +283,5 @@
         private LinkLabel lnkHowToPlay;
         private ComboBox cbxLanguage;
         private LinkLabel lnkAbout;
-        private ContextMenuStrip cmsCopy;
-        private ToolStripMenuItem tsmCopy;
-        private NotifyIcon notifyIcon1;
     }
 }
