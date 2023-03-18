@@ -17,7 +17,7 @@
 x64/
 x86/
 bld/
-[Bb]in/
+Lab2-Anagram/bin/*
 [Oo]bj/
 [Ll]og/
 

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainWindow));
             lblTxtWordToGuess = new Label();
             lblWord = new Label();
             grpGuess = new GroupBox();
@@ -42,12 +43,13 @@
             grpGameHistory = new GroupBox();
             lstGameHistory = new ListBox();
             cmsCopy = new ContextMenuStrip(components);
+            tsmCopy = new ToolStripMenuItem();
             btnNewGame = new Button();
             btnExit = new Button();
             lnkHowToPlay = new LinkLabel();
-            comboBox1 = new ComboBox();
+            cbxLanguage = new ComboBox();
             lnkAbout = new LinkLabel();
-            tsmCopy = new ToolStripMenuItem();
+            notifyIcon1 = new NotifyIcon(components);
             grpGuess.SuspendLayout();
             grpTries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numNbrGuesses).BeginInit();
@@ -179,15 +181,22 @@
             // 
             cmsCopy.Items.AddRange(new ToolStripItem[] { tsmCopy });
             cmsCopy.Name = "cmsCopy";
-            cmsCopy.Size = new Size(181, 48);
+            cmsCopy.Size = new Size(103, 26);
             cmsCopy.Opening += cmsCopy_Opening;
+            // 
+            // tsmCopy
+            // 
+            tsmCopy.Name = "tsmCopy";
+            tsmCopy.Size = new Size(102, 22);
+            tsmCopy.Text = "Copy";
+            tsmCopy.Click += tsmCopy_Click;
             // 
             // btnNewGame
             // 
             btnNewGame.Location = new Point(327, 347);
             btnNewGame.Name = "btnNewGame";
             btnNewGame.Size = new Size(153, 30);
-            btnNewGame.TabIndex = 2;
+            btnNewGame.TabIndex = 5;
             btnNewGame.Text = "New Game";
             btnNewGame.UseVisualStyleBackColor = true;
             btnNewGame.Click += btnNewGame_Click;
@@ -197,7 +206,7 @@
             btnExit.Location = new Point(486, 347);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(90, 30);
-            btnExit.TabIndex = 5;
+            btnExit.TabIndex = 6;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
@@ -208,23 +217,23 @@
             lnkHowToPlay.Location = new Point(404, 12);
             lnkHowToPlay.Name = "lnkHowToPlay";
             lnkHowToPlay.Size = new Size(76, 15);
-            lnkHowToPlay.TabIndex = 6;
+            lnkHowToPlay.TabIndex = 7;
             lnkHowToPlay.TabStop = true;
             lnkHowToPlay.Text = "How to play?";
             lnkHowToPlay.TextAlign = ContentAlignment.TopRight;
             lnkHowToPlay.LinkClicked += lnkHowToPlay_LinkClicked;
             // 
-            // comboBox1
+            // cbxLanguage
             // 
-            comboBox1.DrawMode = DrawMode.OwnerDrawFixed;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.Enabled = false;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(532, 12);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(50, 24);
-            comboBox1.TabIndex = 7;
-            comboBox1.DrawItem += comboBox_DrawItem;
+            cbxLanguage.DrawMode = DrawMode.OwnerDrawFixed;
+            cbxLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxLanguage.Enabled = false;
+            cbxLanguage.FormattingEnabled = true;
+            cbxLanguage.Location = new Point(532, 12);
+            cbxLanguage.Name = "cbxLanguage";
+            cbxLanguage.Size = new Size(50, 24);
+            cbxLanguage.TabIndex = 7;
+            cbxLanguage.DrawItem += comboBox_DrawItem;
             // 
             // lnkAbout
             // 
@@ -238,12 +247,10 @@
             lnkAbout.TextAlign = ContentAlignment.TopRight;
             lnkAbout.LinkClicked += lnkAbout_LinkClicked;
             // 
-            // tsmCopy
+            // notifyIcon1
             // 
-            tsmCopy.Name = "tsmCopy";
-            tsmCopy.Size = new Size(180, 22);
-            tsmCopy.Text = "Copy";
-            tsmCopy.Click += tsmCopy_Click;
+            notifyIcon1.Text = "notifyIcon1";
+            notifyIcon1.Visible = true;
             // 
             // frmMainWindow
             // 
@@ -251,7 +258,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(594, 389);
             Controls.Add(lnkAbout);
-            Controls.Add(comboBox1);
+            Controls.Add(cbxLanguage);
             Controls.Add(lnkHowToPlay);
             Controls.Add(btnExit);
             Controls.Add(btnNewGame);
@@ -261,6 +268,7 @@
             Controls.Add(lblWord);
             Controls.Add(lblTxtWordToGuess);
             FormBorderStyle = FormBorderStyle.Fixed3D;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "frmMainWindow";
@@ -295,9 +303,10 @@
         private Button btnNewGame;
         private Button btnExit;
         private LinkLabel lnkHowToPlay;
-        private ComboBox comboBox1;
+        private ComboBox cbxLanguage;
         private LinkLabel lnkAbout;
         private ContextMenuStrip cmsCopy;
         private ToolStripMenuItem tsmCopy;
+        private NotifyIcon notifyIcon1;
     }
 }

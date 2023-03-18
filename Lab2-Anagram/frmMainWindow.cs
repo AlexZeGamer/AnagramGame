@@ -4,46 +4,6 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
-/* TODO: */
-// - Display an error if the word list is not found (with instructions to put it back)
-// - Check the functional and operational tables
-// - Enhance keyboard navigation
-//   - Choose appropriate default item on YesNo text boxes
-//   - Make it so the default keyboard selected item is the guess text box
-//   - Change tab navigation order
-// - Check if the guess contains all the letters shuffled
-// - Make a configuration popup where we can:
-//   - change the language of the word list
-//   - select a custom word list
-//   - change the number of tries
-//   - change the language of the UI
-//   - define the min and max size of words (with a cursor)
-//   - When saving configuration, ask if we want to save and restart a game or cancel the changes
-//     (with a message to indicate that the games log will not be erased)
-// - Make a win animation ? (like in Solitaire)
-// - Dark mode ?
-//   - Custom theme with a color selector
-// - GitHub :
-//   - Make a README.md (List of features, how to compile, screenshots, etc.)
-//   - Make a .gitignore
-//   - Move this TODO to a separate file (README?)
-// - Make a way to export results?
-
-/* In progress: */
-// - Put an icon on the form (that will show up in the taskbar)
-// - ...
-
-/* Done: */
-// - Known bug : if you win/lose and hit "no" then "no" you have to restart a game and it will be logged twice
-// - Make it so we can give up and show the word (when pressing "New game" ?) => Puts the word in the games history when giving up a game
-// - Make it so we can validate the word by pressing the "Enter" key
-// - Make the "How to play" popup
-// - Make the "About" popup
-// - Check if the guess is the good length
-// - Make it so the list of previous guesses and game history auto-scroll to the bottom
-// - Make sure a word is shuffled (the shuffled word is not the same as the original word), else shuffle it again
-// - Make it so we can copy a list item (previours guesses/games) when right clicking it
-
 
 namespace Lab2_Anagram
 {
@@ -53,7 +13,7 @@ namespace Lab2_Anagram
         const int MAX_NB_TRIES = 5;
 
         // Variables
-        String word;
+        string word = "";
         int gameNumber = 0;
         int nbTriesRemaining = 5;
         string[] words = System.IO.File.ReadAllLines("./files/word_lists/wordsEN.txt");
@@ -74,10 +34,11 @@ namespace Lab2_Anagram
 
         String jumble(String word)
         {
-            string shuffledWord = "";
+            string shuffledWord;
 
-            do
-            {
+            do {
+                shuffledWord = "";
+
                 for (int i = 0; i < word.Length; i++)
                 {
                     char letter = word[i];
@@ -95,7 +56,7 @@ namespace Lab2_Anagram
 
             e.DrawBackground();
 
-            string language = comboBox1.Items[e.Index].ToString() ?? "en";
+            string language = cbxLanguage.Items[e.Index].ToString() ?? "en";
             string imagePath = $"./files/flags/{language}.png";
 
             using (Image image = Image.FromFile(imagePath))
@@ -114,6 +75,10 @@ namespace Lab2_Anagram
 
         private void initialisation()
         {
+            notifyIcon1.Icon = new System.Drawing.Icon(@"./files/icons/alphabet.ico");
+            notifyIcon1.Text = "Anagram";
+            notifyIcon1.Visible = true;
+
             // Hide the arrows of the numeric up/down field (number of tries)
             numNbrGuesses.Controls[0].Visible = false;
 
@@ -147,11 +112,11 @@ namespace Lab2_Anagram
             string[] languages = { "en", "fr" };
             for (int i = 0; i < languages.Length; i++)
             {
-                comboBox1.Items.Add(languages[i]);
+                cbxLanguage.Items.Add(languages[i]);
             }
 
             // default language selected : en
-            comboBox1.SelectedIndex = 0;
+            cbxLanguage.SelectedIndex = 0;
         }
 
         private void logGame(bool win = false)
@@ -332,7 +297,7 @@ namespace Lab2_Anagram
             int index = this.lstGameHistory.IndexFromPoint(e.Location);
             if (index == ListBox.NoMatches) { return; }
             else { lstGameHistory.SetSelected(index, true); }
-            
+
             string? text = lstGameHistory.Items[index].ToString();
 
             // Add the Copy option (copies the selected text inside the richtextbox)
@@ -355,5 +320,6 @@ namespace Lab2_Anagram
         {
             MessageBox.Show(lstGameHistory.SelectedItems.ToString());
         }
+
     }
 }
