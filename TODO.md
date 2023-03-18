@@ -1,14 +1,13 @@
 # TODO
 
 ### To do
+- [ ] Before submitting:
+  - [ ] Check the functional and operational tables a last time
+  - [ ] Send a release on GH
 - [ ] Display an error if the word list is not found (with instructions to put it back)
-- [ ] Check the functional and operational tables
-- [ ] Check if the guess contains all the letters shuffled
-- [ ] Dark mode ?
-  - [ ] Custom theme with a color selector for the background
-  - [ ] Auto complementary color for the text?
 - [ ] Make a way to export results?
 - [ ] Make a win animation ? (like in Solitaire)
+  - [ ] Transparent gif on a transparent frame?
 
 ### In progress
 - [ ] Make a configuration popup where we can:
@@ -19,11 +18,9 @@
   - [ ] define the min and max size of words (with a cursor)
   - [ ] When saving configuration, ask if we want to save and restart the app or cancel the changes
   - [ ] Save confinguration in a file
-
-- [ ] GitHub :
-  - [ ] Make a README.md (List of features, how to compile, screenshots, etc.)
-  - [ ] Make a .gitignore
-  - [x] Move this TODO to a separate file
+  - [ ] Dark mode ?
+    - [ ] Custom theme with a color selector for the background
+    - [ ] Auto complementary color for the text?
 
 ### Done
 - [x] Known bug : if you win/lose and hit "no" then "no" you have to restart a game and it will be logged twice
@@ -40,3 +37,8 @@
   - [x] Choose appropriate default item on YesNo text boxes
   - [x] Make it so the default keyboard selected item is the guess text box
   - [x] Change tab navigation order
+- [x] GitHub :
+  - [x] Make a README.md (List of features, how to compile, screenshots, etc.)
+  - [x] Make a .gitignore
+  - [x] Move this TODO to a separate file
+- [x] Check if the guess contains all the letters shuffled
