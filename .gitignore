@@ -1,7 +1,5 @@
-# .gitignore
-
-# .NET WinForms app
-# Version: 1.0
+# .gitignore file for Visual Studio 2015 projects
+# .NET WinForms application
 
 # User-specific files
 *.suo
@@ -17,7 +15,7 @@
 x64/
 x86/
 bld/
-Lab2-Anagram/bin/*
+[Bb]in/
 [Oo]bj/
 [Ll]og/
 
