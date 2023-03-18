@@ -157,25 +157,41 @@ namespace Lab2_Anagram
 
         private void btnTest_Click(object sender, EventArgs e)
         {
+            String guessedWord = tbxGuess.Text;
+
             // If the text box is empty, do nothing
-            if (tbxGuess.Text.Trim() == "")
+            if (guessedWord.Trim() == "")
             {
                 MessageBox.Show("Please enter a word.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // If the word was already guessed, do nothing
-            if (lstPreviousGuesses.Items.Contains(tbxGuess.Text))
+            if (lstPreviousGuesses.Items.Contains(guessedWord))
             {
                 MessageBox.Show("You already guessed this word.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // If the word is not the same length as the word to guess, do nothing
-            if (tbxGuess.Text.Length != word.Length)
+            if (guessedWord.Length != word.Length)
             {
                 MessageBox.Show("The word must be the same length as the word to guess.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
+            }
+
+            // Check if the guess contains all the letters shuffled the same amount of times
+            for (int i = 0; i < word.Length; i++)
+            {
+                char letter = word[i];
+                int nbLetterInWord = word.Count(x => x == letter);
+                int nbLetterInGuess = guessedWord.Count(x => x == letter);
+
+                if (nbLetterInWord != nbLetterInGuess)
+                {
+                    MessageBox.Show("The word must contain all the letters of the word to guess.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
             // Increase the number of tries
@@ -183,7 +199,7 @@ namespace Lab2_Anagram
             numNbrGuesses.Value = nbTriesRemaining;
 
             // Get the word and save it in the history
-            String guessedWord = tbxGuess.Text;
+            String guessedWord = guessedWord;
             lstPreviousGuesses.Items.Add(guessedWord);
 
             // Scroll down to the bottom of the list
