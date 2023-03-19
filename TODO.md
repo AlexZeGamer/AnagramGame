@@ -3,6 +3,7 @@
 ### To do
 - [ ] Before submitting:
   - [ ] Check the functional and operational tables a last time
+  - [ ] Comment the code properly
   - [ ] Send a release on GH
 - [ ] Display an error if the word list is not found (with instructions to put it back)
 - [ ] Make a way to export results?
