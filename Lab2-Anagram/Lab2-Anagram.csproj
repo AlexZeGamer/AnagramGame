@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="files\**\*.*" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="files\**\*.*" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
 </Project>

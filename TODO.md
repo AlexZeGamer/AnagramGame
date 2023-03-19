@@ -8,19 +8,22 @@
 - [ ] Make a way to export results?
 - [ ] Make a win animation ? (like in Solitaire)
   - [ ] Transparent gif on a transparent frame?
+- [ ] Check keyboard navigation for the config popup
+- [ ] Update README.md
+  - [ ] Add new screenshots
+  - [ ] Add a list of features
 
 ### In progress
 - [ ] Make a configuration popup where we can:
-  - [ ] change the language of the word list
-  - [ ] select a custom word list
-  - [ ] change the number of tries
-  - [ ] change the language of the UI
-  - [ ] define the min and max size of words (with a cursor)
+  - [ ] difficulty presets (easy, medium, hard)
+  - [ ] change the language of the UI (move existing comboBox to the config popup)
   - [ ] When saving configuration, ask if we want to save and restart the app or cancel the changes
-  - [ ] Save confinguration in a file
-  - [ ] Dark mode ?
+  - [ ] Themes :
+    - [ ] Presets?
+      - [ ] Dark mode ?
     - [ ] Custom theme with a color selector for the background
-    - [ ] Auto complementary color for the text?
+    - [x] Auto complementary color for the text?
+  - [ ] Chose if we want the game to prevent us from guessing a word that is not an anagram of the shuffled word
 
 ### Done
 - [x] Known bug : if you win/lose and hit "no" then "no" you have to restart a game and it will be logged twice
@@ -42,3 +45,9 @@
   - [x] Make a .gitignore
   - [x] Move this TODO to a separate file
 - [x] Check if the guess contains all the letters shuffled
+- [ ] Config popup :
+  - [x] change the language of the word list
+  - [x] select a custom word list
+  - [x] change the number of tries
+  - [x] define the min and max size of words (with a cursor)
+  - [x] Save confinguration in a file

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainWindow));
             lblTxtWordToGuess = new Label();
             lblWord = new Label();
@@ -47,6 +46,7 @@
             lnkHowToPlay = new LinkLabel();
             cbxLanguage = new ComboBox();
             lnkAbout = new LinkLabel();
+            btnSettings = new Button();
             grpGuess.SuspendLayout();
             grpTries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numNbrGuesses).BeginInit();
@@ -231,11 +231,22 @@
             lnkAbout.TextAlign = ContentAlignment.TopRight;
             lnkAbout.LinkClicked += lnkAbout_LinkClicked;
             // 
+            // btnSettings
+            // 
+            btnSettings.Location = new Point(507, 42);
+            btnSettings.Name = "btnSettings";
+            btnSettings.Size = new Size(75, 23);
+            btnSettings.TabIndex = 11;
+            btnSettings.Text = "Settings";
+            btnSettings.UseVisualStyleBackColor = true;
+            btnSettings.Click += btnSettings_Click;
+            // 
             // frmMainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(594, 389);
+            Controls.Add(btnSettings);
             Controls.Add(lnkAbout);
             Controls.Add(cbxLanguage);
             Controls.Add(lnkHowToPlay);
@@ -249,7 +260,6 @@
             FormBorderStyle = FormBorderStyle.Fixed3D;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            MinimizeBox = false;
             Name = "frmMainWindow";
             Text = "Anagram Game";
             FormClosing += frmMainWindow_FormClosing;
@@ -283,5 +293,6 @@
         private LinkLabel lnkHowToPlay;
         private ComboBox cbxLanguage;
         private LinkLabel lnkAbout;
+        private Button btnSettings;
     }
 }
