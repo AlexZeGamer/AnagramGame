@@ -65,8 +65,6 @@ namespace Lab2_Anagram
             // Set the text of the labels to the min/max possible value
             lblMinLength.Text = shortestWord.Length.ToString();
             lblMaxLength.Text = longestWord.Length.ToString();
-
-            MessageBox.Show($"Trackbars loaded with " + shortestWord.Length.ToString() + " and " + longestWord.Length.ToString());
         }
 
         private void frmConfig_Load(object sender, EventArgs e)
