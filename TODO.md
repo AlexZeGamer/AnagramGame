@@ -2,7 +2,7 @@
 
 ### To do
 - [ ] Before submitting:
-  - [ ] Check the functional and operational tables a last time
+  - [x] Check the functional and operational tables a last time
   - [ ] Comment the code properly
   - [ ] Send a release on GH
 - [ ] Display an error if the word list is not found (with instructions to put it back)
@@ -11,20 +11,19 @@
   - [ ] Transparent gif on a transparent frame?
 - [ ] Check keyboard navigation for the config popup
 - [ ] Update README.md
-  - [ ] Add new screenshots
+  - [ ] Add new screenshots:
+    - [ ] Make a gif with different themes
+    - [ ] Show the config popup (the two tabs) as a gif
+    - [ ] Show screenshots in different languages
+    - [ ] Show screenshots in different versions of Windows
   - [ ] Add a list of features
 
 ### In progress
 - [ ] Make a configuration popup where we can:
   - [ ] difficulty presets (easy, medium, hard)
   - [ ] change the language of the UI (move existing comboBox to the config popup)
-  - [ ] When saving configuration, ask if we want to save and restart the app or cancel the changes
-  - [ ] Themes :
-    - [ ] Presets?
-      - [ ] Dark mode ?
-    - [ ] Custom theme with a color selector for the background
-    - [x] Auto complementary color for the text?
-  - [ ] Chose if we want the game to prevent us from guessing a word that is not an anagram of the shuffled word
+  - [ ] Chose if we want the accentuated letters to be considered as the same as the non-accentuated ones (default to true)
+  - [ ] Bugfix : The text bar is not keyboard focused when starting a new game (probably because the text bar is not enabled early enough)
 
 ### Done
 - [x] Known bug : if you win/lose and hit "no" then "no" you have to restart a game and it will be logged twice
@@ -52,3 +51,12 @@
   - [x] change the number of tries
   - [x] define the min and max size of words (with a cursor)
   - [x] Save confinguration in a file
+  - [x] Themes :
+    - [x] Presets?
+      - [x] Dark mode ?
+    - [x] Custom theme with a color selector for the background
+    - [x] Auto complementary color for the text?
+    - [x] Button to reset the theme to default
+  - [x] Bugfix : When opening the "Appearance" tab, the ForeColor of every object is updated to white by default
+  - [x] When saving configuration, ask if we want to save and restart the app or cancel the changes
+  - [x] Chose if we want the game to prevent us from guessing a word that is not an anagram of the shuffled word (default

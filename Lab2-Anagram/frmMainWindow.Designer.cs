@@ -44,7 +44,6 @@
             btnNewGame = new Button();
             btnExit = new Button();
             lnkHowToPlay = new LinkLabel();
-            cbxLanguage = new ComboBox();
             lnkAbout = new LinkLabel();
             btnSettings = new Button();
             grpGuess.SuspendLayout();
@@ -197,7 +196,7 @@
             // lnkHowToPlay
             // 
             lnkHowToPlay.AutoSize = true;
-            lnkHowToPlay.Location = new Point(404, 12);
+            lnkHowToPlay.Location = new Point(379, 16);
             lnkHowToPlay.Name = "lnkHowToPlay";
             lnkHowToPlay.Size = new Size(76, 15);
             lnkHowToPlay.TabIndex = 8;
@@ -206,23 +205,10 @@
             lnkHowToPlay.TextAlign = ContentAlignment.TopRight;
             lnkHowToPlay.LinkClicked += lnkHowToPlay_LinkClicked;
             // 
-            // cbxLanguage
-            // 
-            cbxLanguage.DrawMode = DrawMode.OwnerDrawFixed;
-            cbxLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbxLanguage.Enabled = false;
-            cbxLanguage.FormattingEnabled = true;
-            cbxLanguage.Location = new Point(532, 12);
-            cbxLanguage.Name = "cbxLanguage";
-            cbxLanguage.Size = new Size(50, 24);
-            cbxLanguage.TabIndex = 10;
-            cbxLanguage.TabStop = false;
-            cbxLanguage.DrawItem += comboBox_DrawItem;
-            // 
             // lnkAbout
             // 
             lnkAbout.AutoSize = true;
-            lnkAbout.Location = new Point(486, 12);
+            lnkAbout.Location = new Point(461, 16);
             lnkAbout.Name = "lnkAbout";
             lnkAbout.Size = new Size(40, 15);
             lnkAbout.TabIndex = 9;
@@ -233,7 +219,7 @@
             // 
             // btnSettings
             // 
-            btnSettings.Location = new Point(507, 42);
+            btnSettings.Location = new Point(507, 12);
             btnSettings.Name = "btnSettings";
             btnSettings.Size = new Size(75, 23);
             btnSettings.TabIndex = 11;
@@ -248,7 +234,6 @@
             ClientSize = new Size(594, 389);
             Controls.Add(btnSettings);
             Controls.Add(lnkAbout);
-            Controls.Add(cbxLanguage);
             Controls.Add(lnkHowToPlay);
             Controls.Add(btnExit);
             Controls.Add(btnNewGame);
@@ -291,7 +276,6 @@
         private Button btnNewGame;
         private Button btnExit;
         private LinkLabel lnkHowToPlay;
-        private ComboBox cbxLanguage;
         private LinkLabel lnkAbout;
         private Button btnSettings;
     }

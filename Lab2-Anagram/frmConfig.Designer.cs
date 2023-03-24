@@ -50,11 +50,18 @@
             lblTxtMaxLength = new Label();
             lblTxtMinLength = new Label();
             tabSettingsAppearance = new TabPage();
+            grpDisplayLanguage = new GroupBox();
+            cbxLanguage = new ComboBox();
             grpTheme = new GroupBox();
-            chbCustomComplementaryColor = new CheckBox();
-            lblTxtComplementaryColor = new Label();
+            btnDarkTheme = new Button();
+            chbCustomSecondaryBGColor = new CheckBox();
+            lblTxtSecondaryBGColor = new Label();
+            btnColorBGSecondary = new Button();
+            btnDefaultColor = new Button();
+            chbCustomFGColor = new CheckBox();
+            lblTxtFGColor = new Label();
             lblTxtBackgroundColor = new Label();
-            btnColorComplementary = new Button();
+            btnColorFG = new Button();
             btnColorBG = new Button();
             ofdWordList = new OpenFileDialog();
             grpWordList.SuspendLayout();
@@ -67,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)tbrMaxLength).BeginInit();
             ((System.ComponentModel.ISupportInitialize)tbrMinLength).BeginInit();
             tabSettingsAppearance.SuspendLayout();
+            grpDisplayLanguage.SuspendLayout();
             grpTheme.SuspendLayout();
             SuspendLayout();
             // 
@@ -146,6 +154,7 @@
             chbCheckWordCorrect.TabIndex = 0;
             chbCheckWordCorrect.Text = "Check if the guessed word is an anagram before sending";
             chbCheckWordCorrect.UseVisualStyleBackColor = true;
+            chbCheckWordCorrect.CheckedChanged += chbCheckWordCorrect_CheckedChanged;
             // 
             // grpNbTries
             // 
@@ -160,9 +169,11 @@
             // numNbMaxTries
             // 
             numNbMaxTries.Location = new Point(6, 28);
+            numNbMaxTries.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numNbMaxTries.Name = "numNbMaxTries";
             numNbMaxTries.Size = new Size(133, 23);
             numNbMaxTries.TabIndex = 0;
+            numNbMaxTries.Value = new decimal(new int[] { 1, 0, 0, 0 });
             numNbMaxTries.ValueChanged += numNbMaxTries_ValueChanged;
             // 
             // grpRandomWord
@@ -196,6 +207,7 @@
             // cbxDifficultyPreset
             // 
             cbxDifficultyPreset.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxDifficultyPreset.Enabled = false;
             cbxDifficultyPreset.FormattingEnabled = true;
             cbxDifficultyPreset.Location = new Point(121, 139);
             cbxDifficultyPreset.Name = "cbxDifficultyPreset";
@@ -277,6 +289,7 @@
             // 
             // tabSettingsAppearance
             // 
+            tabSettingsAppearance.Controls.Add(grpDisplayLanguage);
             tabSettingsAppearance.Controls.Add(grpTheme);
             tabSettingsAppearance.Location = new Point(4, 24);
             tabSettingsAppearance.Name = "tabSettingsAppearance";
@@ -285,40 +298,119 @@
             tabSettingsAppearance.TabIndex = 1;
             tabSettingsAppearance.Text = "Appearance";
             tabSettingsAppearance.UseVisualStyleBackColor = true;
-            tabSettingsAppearance.Paint += tabSettingsAppearance_Paint;
+            // 
+            // grpDisplayLanguage
+            // 
+            grpDisplayLanguage.Controls.Add(cbxLanguage);
+            grpDisplayLanguage.Location = new Point(6, 159);
+            grpDisplayLanguage.Name = "grpDisplayLanguage";
+            grpDisplayLanguage.Size = new Size(385, 57);
+            grpDisplayLanguage.TabIndex = 12;
+            grpDisplayLanguage.TabStop = false;
+            grpDisplayLanguage.Text = "Display language";
+            // 
+            // cbxLanguage
+            // 
+            cbxLanguage.DrawMode = DrawMode.OwnerDrawFixed;
+            cbxLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxLanguage.Enabled = false;
+            cbxLanguage.FormattingEnabled = true;
+            cbxLanguage.Location = new Point(6, 22);
+            cbxLanguage.Name = "cbxLanguage";
+            cbxLanguage.Size = new Size(138, 24);
+            cbxLanguage.TabIndex = 11;
+            cbxLanguage.TabStop = false;
+            cbxLanguage.DrawItem += comboBox_DrawItem;
             // 
             // grpTheme
             // 
-            grpTheme.Controls.Add(chbCustomComplementaryColor);
-            grpTheme.Controls.Add(lblTxtComplementaryColor);
+            grpTheme.Controls.Add(btnDarkTheme);
+            grpTheme.Controls.Add(chbCustomSecondaryBGColor);
+            grpTheme.Controls.Add(lblTxtSecondaryBGColor);
+            grpTheme.Controls.Add(btnColorBGSecondary);
+            grpTheme.Controls.Add(btnDefaultColor);
+            grpTheme.Controls.Add(chbCustomFGColor);
+            grpTheme.Controls.Add(lblTxtFGColor);
             grpTheme.Controls.Add(lblTxtBackgroundColor);
-            grpTheme.Controls.Add(btnColorComplementary);
+            grpTheme.Controls.Add(btnColorFG);
             grpTheme.Controls.Add(btnColorBG);
             grpTheme.Location = new Point(6, 6);
             grpTheme.Name = "grpTheme";
-            grpTheme.Size = new Size(385, 92);
+            grpTheme.Size = new Size(385, 147);
             grpTheme.TabIndex = 0;
             grpTheme.TabStop = false;
             grpTheme.Text = "Theme";
             // 
-            // chbCustomComplementaryColor
+            // btnDarkTheme
             // 
-            chbCustomComplementaryColor.AutoSize = true;
-            chbCustomComplementaryColor.Location = new Point(311, 54);
-            chbCustomComplementaryColor.Name = "chbCustomComplementaryColor";
-            chbCustomComplementaryColor.Size = new Size(68, 19);
-            chbCustomComplementaryColor.TabIndex = 4;
-            chbCustomComplementaryColor.Text = "Custom";
-            chbCustomComplementaryColor.UseVisualStyleBackColor = true;
+            btnDarkTheme.Location = new Point(179, 111);
+            btnDarkTheme.Name = "btnDarkTheme";
+            btnDarkTheme.Size = new Size(123, 23);
+            btnDarkTheme.TabIndex = 9;
+            btnDarkTheme.Text = "Dark theme";
+            btnDarkTheme.UseVisualStyleBackColor = true;
+            btnDarkTheme.Click += btnDarkTheme_Click;
             // 
-            // lblTxtComplementaryColor
+            // chbCustomSecondaryBGColor
             // 
-            lblTxtComplementaryColor.AutoSize = true;
-            lblTxtComplementaryColor.Location = new Point(43, 55);
-            lblTxtComplementaryColor.Name = "lblTxtComplementaryColor";
-            lblTxtComplementaryColor.Size = new Size(123, 15);
-            lblTxtComplementaryColor.TabIndex = 3;
-            lblTxtComplementaryColor.Text = "Complementary color";
+            chbCustomSecondaryBGColor.AutoSize = true;
+            chbCustomSecondaryBGColor.Location = new Point(311, 54);
+            chbCustomSecondaryBGColor.Name = "chbCustomSecondaryBGColor";
+            chbCustomSecondaryBGColor.Size = new Size(68, 19);
+            chbCustomSecondaryBGColor.TabIndex = 8;
+            chbCustomSecondaryBGColor.Text = "Custom";
+            chbCustomSecondaryBGColor.UseVisualStyleBackColor = true;
+            chbCustomSecondaryBGColor.CheckedChanged += chbCustomSecondaryBGColor_CheckedChanged;
+            // 
+            // lblTxtSecondaryBGColor
+            // 
+            lblTxtSecondaryBGColor.AutoSize = true;
+            lblTxtSecondaryBGColor.Location = new Point(43, 55);
+            lblTxtSecondaryBGColor.Name = "lblTxtSecondaryBGColor";
+            lblTxtSecondaryBGColor.Size = new Size(159, 15);
+            lblTxtSecondaryBGColor.TabIndex = 7;
+            lblTxtSecondaryBGColor.Text = "Secondary background color";
+            // 
+            // btnColorBGSecondary
+            // 
+            btnColorBGSecondary.BackColor = Color.Black;
+            btnColorBGSecondary.Enabled = false;
+            btnColorBGSecondary.Location = new Point(6, 51);
+            btnColorBGSecondary.Name = "btnColorBGSecondary";
+            btnColorBGSecondary.Size = new Size(31, 23);
+            btnColorBGSecondary.TabIndex = 6;
+            btnColorBGSecondary.UseVisualStyleBackColor = false;
+            btnColorBGSecondary.Click += btnColorBGSecondary_Click;
+            // 
+            // btnDefaultColor
+            // 
+            btnDefaultColor.Location = new Point(6, 111);
+            btnDefaultColor.Name = "btnDefaultColor";
+            btnDefaultColor.Size = new Size(167, 23);
+            btnDefaultColor.TabIndex = 5;
+            btnDefaultColor.Text = "Default (light theme)";
+            btnDefaultColor.UseVisualStyleBackColor = true;
+            btnDefaultColor.Click += btnDefaultColor_Click;
+            // 
+            // chbCustomFGColor
+            // 
+            chbCustomFGColor.AutoSize = true;
+            chbCustomFGColor.Location = new Point(311, 83);
+            chbCustomFGColor.Name = "chbCustomFGColor";
+            chbCustomFGColor.Size = new Size(68, 19);
+            chbCustomFGColor.TabIndex = 4;
+            chbCustomFGColor.Text = "Custom";
+            chbCustomFGColor.UseVisualStyleBackColor = true;
+            chbCustomFGColor.CheckedChanged += chbCustomFGColor_CheckedChanged;
+            // 
+            // lblTxtFGColor
+            // 
+            lblTxtFGColor.AutoSize = true;
+            lblTxtFGColor.Location = new Point(43, 84);
+            lblTxtFGColor.Name = "lblTxtFGColor";
+            lblTxtFGColor.Size = new Size(58, 15);
+            lblTxtFGColor.TabIndex = 3;
+            lblTxtFGColor.Text = "Text color";
             // 
             // lblTxtBackgroundColor
             // 
@@ -329,16 +421,16 @@
             lblTxtBackgroundColor.TabIndex = 2;
             lblTxtBackgroundColor.Text = "Background color";
             // 
-            // btnColorComplementary
+            // btnColorFG
             // 
-            btnColorComplementary.BackColor = Color.Black;
-            btnColorComplementary.Enabled = false;
-            btnColorComplementary.Location = new Point(6, 51);
-            btnColorComplementary.Name = "btnColorComplementary";
-            btnColorComplementary.Size = new Size(31, 23);
-            btnColorComplementary.TabIndex = 1;
-            btnColorComplementary.UseVisualStyleBackColor = false;
-            btnColorComplementary.Click += btnColorComplementary_Click;
+            btnColorFG.BackColor = Color.Black;
+            btnColorFG.Enabled = false;
+            btnColorFG.Location = new Point(6, 80);
+            btnColorFG.Name = "btnColorFG";
+            btnColorFG.Size = new Size(31, 23);
+            btnColorFG.TabIndex = 1;
+            btnColorFG.UseVisualStyleBackColor = false;
+            btnColorFG.Click += btnColorFG_Click;
             // 
             // btnColorBG
             // 
@@ -368,7 +460,7 @@
             MaximizeBox = false;
             Name = "frmConfig";
             Text = "Settings";
-            FormClosed += frmConfig_FormClosed;
+            FormClosing += frmConfig_FormClosing;
             Load += frmConfig_Load;
             grpWordList.ResumeLayout(false);
             tabSettings.ResumeLayout(false);
@@ -382,6 +474,7 @@
             ((System.ComponentModel.ISupportInitialize)tbrMaxLength).EndInit();
             ((System.ComponentModel.ISupportInitialize)tbrMinLength).EndInit();
             tabSettingsAppearance.ResumeLayout(false);
+            grpDisplayLanguage.ResumeLayout(false);
             grpTheme.ResumeLayout(false);
             grpTheme.PerformLayout();
             ResumeLayout(false);
@@ -395,7 +488,7 @@
         private TabPage tabSettingsAppearance;
         private GroupBox grpTheme;
         private Button btnColorBG;
-        private Button btnColorComplementary;
+        private Button btnColorFG;
         private ComboBox cbxWordList;
         private Button btnImportWordList;
         private OpenFileDialog ofdWordList;
@@ -414,8 +507,15 @@
         private CheckBox chbCheckWordCorrect;
         private Label lblTxtDifficultyPreset;
         private ComboBox cbxDifficultyPreset;
-        private Label lblTxtComplementaryColor;
+        private Label lblTxtFGColor;
         private Label lblTxtBackgroundColor;
-        private CheckBox chbCustomComplementaryColor;
+        private CheckBox chbCustomFGColor;
+        private Button btnDefaultColor;
+        private CheckBox chbCustomSecondaryBGColor;
+        private Label lblTxtSecondaryBGColor;
+        private Button btnColorBGSecondary;
+        private Button btnDarkTheme;
+        private ComboBox cbxLanguage;
+        private GroupBox grpDisplayLanguage;
     }
 }

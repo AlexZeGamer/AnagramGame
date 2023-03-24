@@ -1,7 +1,10 @@
 using System.Configuration;
+using System.Drawing;
 
-namespace Lab2_Anagram {
-    public partial class frmMainWindow : Form {
+namespace Lab2_Anagram
+{
+    public partial class frmMainWindow : Form
+    {
         // Variables
         string word = "";
         int gameNumber = 0;
@@ -25,7 +28,8 @@ namespace Lab2_Anagram {
         {
             string shuffledWord;
 
-            do {
+            do
+            {
                 shuffledWord = "";
 
                 for (int i = 0; i < word.Length; i++)
@@ -49,6 +53,10 @@ namespace Lab2_Anagram {
             // Load the config
             Program.loadConfig();
 
+            // Set the color theme from the config file
+            Program.SetColors(this, Program.colorBackground, Program.colorSecondaryBackground, Program.colorForeground);
+            this.Refresh();
+
             // Hide the arrows of the numeric up/down field (number of tries)
             numNbrGuesses.Controls[0].Visible = false;
 
@@ -56,7 +64,8 @@ namespace Lab2_Anagram {
             gameNumber++;
 
             // get a random word (between minWordLength and maxWordLength)
-            do {
+            do
+            {
                 int pos = randint(0, Program.words.Length);
                 word = Program.words[pos];
             } while (word.Length < Program.minWordLength || word.Length > Program.maxWordLength);
@@ -79,16 +88,6 @@ namespace Lab2_Anagram {
 
             // Make the text box maximum Length equal to the length of the word
             tbxGuess.MaxLength = word.Length;
-
-            // Add the languages
-            string[] languages = { "en", "fr" };
-            for (int i = 0; i < languages.Length; i++)
-            {
-                cbxLanguage.Items.Add(languages[i]);
-            }
-
-            // default language selected : en
-            cbxLanguage.SelectedIndex = 0;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -111,24 +110,6 @@ namespace Lab2_Anagram {
                 // Cancel the Closing event from closing the form.
                 e.Cancel = true;
             }
-        }
-
-        private void comboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index < 0) return;
-
-            e.DrawBackground();
-
-            string language = cbxLanguage.Items[e.Index].ToString() ?? "en";
-            string imagePath = $"./files/flags/{language}.png";
-
-            using (Image image = Image.FromFile(imagePath))
-            {
-                float imageRatio = (float)image.Width / (float)image.Height;
-                e.Graphics.DrawImage(image, e.Bounds.Left, e.Bounds.Top, e.Bounds.Height * imageRatio, e.Bounds.Height);
-            }
-
-            e.DrawFocusRectangle();
         }
 
         private void logGame(bool win = false)
@@ -203,16 +184,18 @@ namespace Lab2_Anagram {
             }
 
             // Check if the guess contains all the letters shuffled the same amount of times
-            for (int i = 0; i < word.Length; i++)
-            {
-                char letter = word[i];
-                int nbLetterInWord = word.Count(x => x.ToString().ToUpper() == letter.ToString().ToUpper());
-                int nbLetterInGuess = guessedWord.Count(x => x.ToString().ToUpper() == letter.ToString().ToUpper());
-
-                if (nbLetterInWord != nbLetterInGuess)
+            if (bool.Parse(Program.GetSetting("checkAnagram") ?? "false")) {
+                for (int i = 0; i < word.Length; i++)
                 {
-                    MessageBox.Show("The word must contain every letters of the word to guess in the same amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    char letter = word[i];
+                    int nbLetterInWord = word.Count(x => x.ToString().ToUpper() == letter.ToString().ToUpper());
+                    int nbLetterInGuess = guessedWord.Count(x => x.ToString().ToUpper() == letter.ToString().ToUpper());
+
+                    if (nbLetterInWord != nbLetterInGuess)
+                    {
+                        MessageBox.Show("The word must contain every letters of the word to guess in the same amount.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
             }
 
@@ -314,8 +297,8 @@ namespace Lab2_Anagram {
         private void btnSettings_Click(object sender, EventArgs e)
         {
             // open the frmConfig window
-            frmConfig frmConfig = new frmConfig(this);
-            frmConfig.ShowDialog();
+            Program.configForm.ShowDialog();
         }
+
     }
 }
